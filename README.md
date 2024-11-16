@@ -1,4 +1,4 @@
-# iConnect v0.4
+# ConnectiDeevice v0.4
 Mount your iDevice (iPhone, iPad) on Ubuntu \
 Tested on Ubuntu 22.04
 # Documentation: 
@@ -10,6 +10,6 @@ Tested on Ubuntu 22.04
 - Execute the script.
 
 # 
-    cd iConnect
-    chmod +x iConnect.sh
-    ./iConnect.sh
+    cd ConnectiDeevice
+    chmod +x ConnectiDeevice.sh
+    ./ConnectiDeevice.sh
