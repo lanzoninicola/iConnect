@@ -1,6 +1,6 @@
-# ConnectiDeevice v0.4
+# ConnectiDeevice v1
 Mount your iDevice (iPhone, iPad) on Ubuntu \
-Tested on Ubuntu 22.04
+Tested on Ubuntu 24.04
 # Documentation: 
     https://askubuntu.com/questions/928750/how-do-i-access-ios-camera-pictures-on-ubuntu
 # Instructions:
