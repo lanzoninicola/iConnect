@@ -1,4 +1,4 @@
-# ConnectiDeevice v1
+# ConnectiDevice v1
 Mount your iDevice (iPhone, iPad) on Ubuntu \
 Tested on Ubuntu 24.04
 # Documentation: 
