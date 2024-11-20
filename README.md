@@ -11,23 +11,30 @@ Before proceeding, ensure that the following dependencies are installed:
 - `libimobiledevice` (for interacting with iOS devices on Ubuntu).
   
 To install it, run:
+
     sudo apt-get install libimobiledevice
 
 ## Instructions (iConnect):
-   ```bash
-   # Clone the repository.
-   git clone https://github.com/levoominds/iConnect.git
 
-   # Change into the folder
-   cd iDevice
+    # Clone the repository.
+    git clone https://github.com/levoominds/iConnect.git
 
-   # Make the file executeable
-   chmod +x iDevice.sh
+    # Change into the folder
+    cd iDevice
 
-   # Run the file
-   ./iDevice.sh
+    # Make the file executeable
+    chmod +x iDevice.sh
 
-   ```
+    # Run the file
+    ./iDevice.sh
+
+## Logfile:
+All script output, including error messages and system logs, is saved to a log file located at your home folder.
+
+    cat ~/iDevice.log
+
+
+
 
 
 

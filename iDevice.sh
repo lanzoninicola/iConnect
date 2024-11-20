@@ -1,21 +1,21 @@
 #!/bin/bash
-# Version: 1.0
-# Description: A script to detect, mount, and interact with an iDevice using ifuse.
-# Author: Levoo Minds
-
-# Variables
-LOG_FILE="$HOME/iDevice.log"
-PACKAGE="ifuse"
-MOUNT_PATH="$HOME/iDevice"
-
-# Functions
+#------------------------------------------------------
+# Author:   Levoo Minds
+# Version:  4
+#------------------------------------------------------
+#------------------------------------------------------
+# Function: log_message
+# Description: Logs a message with a timestamp to the log file.
+#------------------------------------------------------
 log_message() {
-    # Logs a message with timestamp
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
 
+#------------------------------------------------------
+# Function: check_and_install_package
+# Description: Checks if a package is installed and installs it if missing.
+#------------------------------------------------------
 check_and_install_package() {
-    # Checks if the required package is installed, installs if missing
     if ! dpkg -s "$1" &>/dev/null; then
         log_message "Package $1 not found. Installing..."
         sudo apt update && sudo apt install "$1" libimobiledevice-utils -y
@@ -30,8 +30,11 @@ check_and_install_package() {
     fi
 }
 
+#------------------------------------------------------
+# Function: validate_device
+# Description: Validates the connection of an iDevice.
+#------------------------------------------------------
 validate_device() {
-    # Validates the iDevice connection
     if idevicepair validate | grep -q "No"; then
         log_message "No iDevice detected. Connect your iDevice and allow access."
         return 1
@@ -40,8 +43,11 @@ validate_device() {
     return 0
 }
 
+#------------------------------------------------------
+# Function: prepare_mount_path
+# Description: Ensures the mount path exists, creates it if not.
+#------------------------------------------------------
 prepare_mount_path() {
-    # Prepares the mount path
     if [ ! -d "$MOUNT_PATH" ]; then
         log_message "Mount path $MOUNT_PATH does not exist. Creating..."
         mkdir -p "$MOUNT_PATH"
@@ -53,8 +59,11 @@ prepare_mount_path() {
     fi
 }
 
+#------------------------------------------------------
+# Function: unmount_if_needed
+# Description: Unmounts the device if it is already mounted.
+#------------------------------------------------------
 unmount_if_needed() {
-    # Unmounts the device if it is already mounted
     if mountpoint -q "$MOUNT_PATH"; then
         log_message "Device already mounted at $MOUNT_PATH. Unmounting..."
         umount "$MOUNT_PATH"
@@ -65,8 +74,11 @@ unmount_if_needed() {
     fi
 }
 
+#------------------------------------------------------
+# Function: mount_device
+# Description: Mounts the iDevice to the specified path.
+#------------------------------------------------------
 mount_device() {
-    # Mounts the iDevice to the specified path
     log_message "Mounting iDevice to $MOUNT_PATH..."
     ifuse "$MOUNT_PATH" &>>"$LOG_FILE"
     if [ $? -eq 0 ]; then
@@ -77,8 +89,11 @@ mount_device() {
     fi
 }
 
+#------------------------------------------------------
+# Function: main
+# Description: Main execution flow of the script.
+#------------------------------------------------------
 main() {
-    # Main script execution
     log_message "Starting iDevice manager script."
 
     # Check and install required package
@@ -102,5 +117,14 @@ main() {
     done
 }
 
-# Execute the main function
+#------------------------------------------------------
+# Variables:
+#------------------------------------------------------
+LOG_FILE="$HOME/iDevice.log"
+PACKAGE="ifuse"
+MOUNT_PATH="$HOME/iDevice"
+
+#------------------------------------------------------
+# MAIN: Entrypoint
+#------------------------------------------------------
 main
