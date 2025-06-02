@@ -20,7 +20,7 @@ To install it, run:
     git clone https://github.com/levoominds/iConnect.git
 
     # Change into the folder
-    cd iDevice
+    cd iConnect
 
     # Make the file executeable
     chmod +x iDevice.sh
